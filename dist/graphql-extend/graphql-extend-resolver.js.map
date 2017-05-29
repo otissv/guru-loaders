@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/graphql-extend/graphql-extend-resolver.js"],"names":["extendedResolverQuery"],"mappings":";;;;;AAAO,IAAMA,wDAAwB,EAA9B","file":"graphql-extend-resolver.js","sourcesContent":["export const extendedResolverQuery = {};\n"]}

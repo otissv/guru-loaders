@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/graphql-extend/graphql-extend-schema.js"],"names":["extensionTypes","extensionSchemaQuery"],"mappings":";;;;;AAAO,IAAMA,4CAAN;;AAEA,IAAMC,wDAAN","file":"graphql-extend-schema.js","sourcesContent":["export const extensionTypes = ``;\n\nexport const extensionSchemaQuery = ``;\n"]}
