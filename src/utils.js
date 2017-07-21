@@ -94,7 +94,7 @@ export const readModuleFile = async moduleFilePath => {
 
 
 export const globGQLModulePathsAsync = fileNamePrefix => {
-  return glob(`${dist}/modules/**/${fileNamePrefix}*.gql`)
+  return glob(`${dist}/modules/**/${fileNamePrefix}*.graphql`)
     .catch((error) => process.stdout.write(error));
 };
 

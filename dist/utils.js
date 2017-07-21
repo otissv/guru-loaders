@@ -197,7 +197,7 @@ var readModuleFile = exports.readModuleFile = function () {
 }();
 
 var globGQLModulePathsAsync = exports.globGQLModulePathsAsync = function globGQLModulePathsAsync(fileNamePrefix) {
-  return (0, _globPromise2.default)(dist + '/modules/**/' + fileNamePrefix + '*.gql').catch(function (error) {
+  return (0, _globPromise2.default)(dist + '/modules/**/' + fileNamePrefix + '*.graphql').catch(function (error) {
     return process.stdout.write(error);
   });
 };

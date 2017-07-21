@@ -9,13 +9,13 @@ Below are the loaders and where on the sever the loaders will look for the files
 ### Schemas
 Schema files must be placed anywhere inside of ./server/modules nested as deeply as desired.
 
-Schemas consisted of there files and must start with a prefix of schemaQuery, schemaMutation, schemaType and end with a .gql suffix.
+Schemas consisted of there files and must start with a prefix of schemaQuery, schemaMutation, schemaType and end with a .graphql suffix.
 
-- schemaQuery.gql
-- schemaMutation.gql
-- schemaType.gql
-- schemaQuery-user.gql
-- schemaQuery-user-profile.gql
+- schemaQuery.graphql
+- schemaMutation.graphql
+- schemaType.graphql
+- schemaQuery-user.graphql
+- schemaQuery-user-profile.graphql
 
 ### Resolvers
 Resolvers files mus be placed in side the anywhere inside of ./server/modules nested as deeply as desired.
@@ -25,7 +25,7 @@ Schemas consisted of there files and must start with a prefix of schemaQuery, sc
 - resolverQuery.js
 - resolverMutation.js
 - resolverQuery-user.js
-- resolverQuery-user-profile.gql
+- resolverQuery-user-profile.js
 
 ### Database connection
 Multiple database connections can be placed ./server/core/databases.js
