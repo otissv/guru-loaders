@@ -8,7 +8,7 @@ import { globPathsAsync } from '../utils';
 
 export default async function databasesLoaderAsync () {
   try {
-    const configPath = await globPathsAsync('core/databases.js');
+    const configPath = await globPathsAsync('core/database/index-databases.js');
 
     return require(configPath[0]);
   } catch (error) {
