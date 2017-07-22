@@ -1,6 +1,6 @@
 'use strict';
 /*
-* Models loader
+* JSON loader
 */
 
 'use string';
@@ -19,6 +19,10 @@ var _isSchemaValid = require('is-schema-valid');
 
 var _isSchemaValid2 = _interopRequireDefault(_isSchemaValid);
 
+var _toCamelCase = require('to-camel-case');
+
+var _toCamelCase2 = _interopRequireDefault(_toCamelCase);
+
 var _utils = require('../utils');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29,7 +33,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 exports.default = function () {
   var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(schema) {
-    var validationPaths, validation;
+    var validationPaths, customValidation;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -40,33 +44,33 @@ exports.default = function () {
 
           case 3:
             validationPaths = _context.sent;
-            validation = validationPaths.map(function (validation) {
-              var mod = require(validation).default;
+            customValidation = validationPaths.map(function (validationPath) {
+              var mod = require(validationPath).default;
               return {
                 name: mod.name,
-                validation: mod
+                Validation: mod
               };
             });
-            return _context.abrupt('return', _bluebird2.default.reduce(schema.definition.models, function (previous, model) {
-              var modelValidation = validation.filter(function (i) {
-                return i.name === model.name;
+            return _context.abrupt('return', _bluebird2.default.reduce(schema.definition.json, function (previous, json) {
+              var jsonValidation = customValidation.filter(function (i) {
+                return i.name === json.name;
               });
               var Validation = void 0;
               var validationField = void 0;
 
-              if (modelValidation.length > 0) {
-                Validation = new modelValidation[0].validation();
+              if (jsonValidation.length > 0) {
+                Validation = new jsonValidation[0].Validation();
                 validationField = (0, _utils.getMethods)(Validation)[0];
               }
 
-              var schema = modelValidation.length > 0 ? (0, _utils.merge)([model.fields, _defineProperty({}, validationField, _extends({}, model.fields[validationField], {
+              var schema = jsonValidation.length > 0 ? (0, _utils.merge)([json.fields, _defineProperty({}, validationField, _extends({}, json.fields[validationField], {
                 validation: Validation[validationField]
-              }))]) : model.fields;
+              }))]) : json.fields;
 
-              return _extends({}, previous, _defineProperty({}, model.name, {
+              return _extends({}, previous, _defineProperty({}, (0, _toCamelCase2.default)(json.name), {
                 schema: schema,
                 isValid: function isValid(data) {
-                  return (0, _isSchemaValid2.default)(schema)(data);
+                  return (0, _isSchemaValid2.default)(json.fields)(data);
                 }
               }));
             }, {}));
@@ -85,10 +89,10 @@ exports.default = function () {
     }, _callee, this, [[0, 8]]);
   }));
 
-  function modelLoaderAsync(_x) {
+  function jsonLoaderAsync(_x) {
     return _ref.apply(this, arguments);
   }
 
-  return modelLoaderAsync;
+  return jsonLoaderAsync;
 }();
-//# sourceMappingURL=model-loader.js.map
+//# sourceMappingURL=json-loader.js.map

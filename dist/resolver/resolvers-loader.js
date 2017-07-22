@@ -234,7 +234,7 @@ var reduceResolverModulesAsync = exports.reduceResolverModulesAsync = function r
 exports.default = function () {
   var _ref7 = _asyncToGenerator(regeneratorRuntime.mark(function _callee5(_ref8) {
     var schema = _ref8.schema,
-        model = _ref8.model;
+        validation = _ref8.validation;
     var loadedResolverModules, resolvers, connectors;
     return regeneratorRuntime.wrap(function _callee5$(_context5) {
       while (1) {

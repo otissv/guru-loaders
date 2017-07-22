@@ -77,7 +77,7 @@ var initObj = {
   interface: [],
   scalars: [],
   types: [],
-  models: [],
+  json: [],
   definitionList: [],
   unions: [],
   operations: {
@@ -106,7 +106,7 @@ function createTypeDefinitions(_ref2) {
   return _extends({}, document, (_extends3 = {}, _defineProperty(_extends3, type, [].concat(_toConsumableArray(document[type]), [{
     name: node.name.value,
     fields: createObjectFields(node)
-  }])), _defineProperty(_extends3, 'definitionList', createDefinitionList({ document: document, node: node })), _defineProperty(_extends3, 'models', [].concat(_toConsumableArray(document.models), [{
+  }])), _defineProperty(_extends3, 'definitionList', createDefinitionList({ document: document, node: node })), _defineProperty(_extends3, 'json', [].concat(_toConsumableArray(document.json), [{
     name: node.name.value,
     fields: node.fields.reduce(function (obj, field) {
       var typeName = field.type.type ? (0, _toCamelCase2.default)(field.type.type.name.value) : (0, _toCamelCase2.default)(field.type.name.value);

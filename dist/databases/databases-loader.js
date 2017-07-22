@@ -22,7 +22,7 @@ exports.default = function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return (0, _utils.globPathsAsync)('core/databases.js');
+            return (0, _utils.globPathsAsync)('core/database/index-databases.js');
 
           case 3:
             configPath = _context.sent;

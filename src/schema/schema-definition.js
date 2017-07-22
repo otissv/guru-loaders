@@ -15,7 +15,7 @@ const initObj = {
   interface: [],
   scalars: [],
   types: [],
-  models: [],
+  json: [],
   definitionList: [],
   unions: [],
   operations: {
@@ -45,8 +45,8 @@ function createTypeDefinitions ({ document, node, type }) {
       }
     ],
     definitionList: createDefinitionList({ document, node }),
-    models: [
-      ...document.models,
+    json: [
+      ...document.json,
       {
         name: node.name.value,
         fields: node.fields.reduce((obj, field) => {
@@ -156,9 +156,9 @@ export default function ({ astDocument, typeDefinitionList }) {
             // add resolve to context store
             if (contextStore[field.name] == null) {
               const resolve = (query, args, context) => {
-                const Class = new (context.connectors[
-                  camel(field.type.name)
-                ])();
+                const Class = new context.connectors[
+                  (camel(field.type.name))
+                ]();
 
                 return Class.resolve({
                   query,

@@ -20,9 +20,9 @@ var _middlewareLoader = require('./middleware/middleware-loader');
 
 var _middlewareLoader2 = _interopRequireDefault(_middlewareLoader);
 
-var _modelLoader = require('./model/model-loader');
+var _jsonLoader = require('./json/json-loader');
 
-var _modelLoader2 = _interopRequireDefault(_modelLoader);
+var _jsonLoader2 = _interopRequireDefault(_jsonLoader);
 
 var _resolversLoader = require('./resolver/resolvers-loader');
 
@@ -46,7 +46,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 exports.default = function () {
   var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
-    var schema, model, resolver;
+    var schema, json, resolver;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -58,12 +58,12 @@ exports.default = function () {
           case 3:
             schema = _context.sent;
             _context.next = 6;
-            return (0, _modelLoader2.default)(schema);
+            return (0, _jsonLoader2.default)(schema);
 
           case 6:
-            model = _context.sent;
+            json = _context.sent;
             _context.next = 9;
-            return (0, _resolversLoader2.default)({ schema: schema, model: model });
+            return (0, _resolversLoader2.default)({ schema: schema, json: json });
 
           case 9:
             resolver = _context.sent;
@@ -86,7 +86,7 @@ exports.default = function () {
 
           case 19:
             _context.t2 = _context.sent;
-            _context.t3 = model;
+            _context.t3 = json;
             _context.t4 = resolver;
             _context.next = 24;
             return (0, _routesLoader2.default)();
@@ -98,7 +98,7 @@ exports.default = function () {
               databaseLoader: _context.t0,
               configLoader: _context.t1,
               middlewareLoader: _context.t2,
-              modelLoader: _context.t3,
+              jsonLoader: _context.t3,
               resolverLoader: _context.t4,
               routeLoader: _context.t5,
               schemaLoader: _context.t6

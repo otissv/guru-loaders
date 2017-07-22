@@ -7,9 +7,7 @@
 import Bluebird from 'bluebird';
 import canAccessAsync from './canAccess-loader';
 import connectorReducerAsync from './conncetors-reducer-loader';
-import {
-  extendedResolverQuery
-} from '../graphql-extend/graphql-extend-resolver';
+import { extendedResolverQuery } from '../graphql-extend/graphql-extend-resolver';
 import camel from 'to-camel-case';
 import snake from 'to-snake-case';
 import {
@@ -133,7 +131,7 @@ export const reduceResolverModulesAsync = loadedResolverModules => {
   ).catch(error => console.log(error));
 };
 
-export default async function resolverLoaderAsync ({ schema, model }) {
+export default async function resolverLoaderAsync ({ schema, validation }) {
   try {
     const loadedResolverModules = await pipeAsync([
       mergeGlobPathsAsync('resolverMutation'),

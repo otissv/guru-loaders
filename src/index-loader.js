@@ -6,7 +6,7 @@
 import databasesLoaderAsync from './databases/databases-loader';
 import environmentLoaderAsync from './environment/environment-loader';
 import middlewareLoaderAsync from './middleware/middleware-loader';
-import modelLoaderAsync from './model/model-loader';
+import jsonLoaderAsync from './json/json-loader';
 import resolverLoaderAsync from './resolver/resolvers-loader';
 import routesLoaderAsync from './routes/routes-loader';
 import schemaLoaderAsync from './schema/schema-loader';
@@ -15,8 +15,8 @@ import tests from './tests';
 export default async function loaders () {
   try {
     const schema = await schemaLoaderAsync();
-    const model = await modelLoaderAsync(schema);
-    const resolver = await resolverLoaderAsync({ schema, model });
+    const json = await jsonLoaderAsync(schema);
+    const resolver = await resolverLoaderAsync({ schema, json });
 
     tests({ schema, resolver });
 
@@ -24,7 +24,7 @@ export default async function loaders () {
       databaseLoader: await databasesLoaderAsync(),
       configLoader: await environmentLoaderAsync(),
       middlewareLoader: await middlewareLoaderAsync(),
-      modelLoader: model,
+      jsonLoader: json,
       resolverLoader: resolver,
       routeLoader: await routesLoaderAsync(),
       schemaLoader: schema
