@@ -5,8 +5,9 @@
 'use strict';
 import databasesLoaderAsync from './databases/databases-loader';
 import environmentLoaderAsync from './environment/environment-loader';
-import middlewareLoaderAsync from './middleware/middleware-loader';
 import jsonLoaderAsync from './json/json-loader';
+import middlewareLoaderAsync from './middleware/middleware-loader';
+import modelLoaderAsync from './model/model-loader';
 import resolverLoaderAsync from './resolver/resolvers-loader';
 import routesLoaderAsync from './routes/routes-loader';
 import schemaLoaderAsync from './schema/schema-loader';
@@ -21,10 +22,11 @@ export default async function loaders () {
     tests({ schema, resolver });
 
     return {
-      databaseLoader: await databasesLoaderAsync(),
       configLoader: await environmentLoaderAsync(),
-      middlewareLoader: await middlewareLoaderAsync(),
+      databaseLoader: await databasesLoaderAsync(),
       jsonLoader: json,
+      middlewareLoader: await middlewareLoaderAsync(),
+      modelLoader: await modelLoaderAsync(),
       resolverLoader: resolver,
       routeLoader: await routesLoaderAsync(),
       schemaLoader: schema

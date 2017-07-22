@@ -16,13 +16,17 @@ var _environmentLoader = require('./environment/environment-loader');
 
 var _environmentLoader2 = _interopRequireDefault(_environmentLoader);
 
+var _jsonLoader = require('./json/json-loader');
+
+var _jsonLoader2 = _interopRequireDefault(_jsonLoader);
+
 var _middlewareLoader = require('./middleware/middleware-loader');
 
 var _middlewareLoader2 = _interopRequireDefault(_middlewareLoader);
 
-var _jsonLoader = require('./json/json-loader');
+var _modelLoader = require('./model/model-loader');
 
-var _jsonLoader2 = _interopRequireDefault(_jsonLoader);
+var _modelLoader2 = _interopRequireDefault(_modelLoader);
 
 var _resolversLoader = require('./resolver/resolvers-loader');
 
@@ -72,50 +76,56 @@ exports.default = function () {
             (0, _tests2.default)({ schema: schema, resolver: resolver });
 
             _context.next = 13;
-            return (0, _databasesLoader2.default)();
+            return (0, _environmentLoader2.default)();
 
           case 13:
             _context.t0 = _context.sent;
             _context.next = 16;
-            return (0, _environmentLoader2.default)();
+            return (0, _databasesLoader2.default)();
 
           case 16:
             _context.t1 = _context.sent;
-            _context.next = 19;
+            _context.t2 = json;
+            _context.next = 20;
             return (0, _middlewareLoader2.default)();
 
-          case 19:
-            _context.t2 = _context.sent;
-            _context.t3 = json;
-            _context.t4 = resolver;
-            _context.next = 24;
+          case 20:
+            _context.t3 = _context.sent;
+            _context.next = 23;
+            return (0, _modelLoader2.default)();
+
+          case 23:
+            _context.t4 = _context.sent;
+            _context.t5 = resolver;
+            _context.next = 27;
             return (0, _routesLoader2.default)();
 
-          case 24:
-            _context.t5 = _context.sent;
-            _context.t6 = schema;
+          case 27:
+            _context.t6 = _context.sent;
+            _context.t7 = schema;
             return _context.abrupt('return', {
-              databaseLoader: _context.t0,
-              configLoader: _context.t1,
-              middlewareLoader: _context.t2,
-              jsonLoader: _context.t3,
-              resolverLoader: _context.t4,
-              routeLoader: _context.t5,
-              schemaLoader: _context.t6
+              configLoader: _context.t0,
+              databaseLoader: _context.t1,
+              jsonLoader: _context.t2,
+              middlewareLoader: _context.t3,
+              modelLoader: _context.t4,
+              resolverLoader: _context.t5,
+              routeLoader: _context.t6,
+              schemaLoader: _context.t7
             });
 
-          case 29:
-            _context.prev = 29;
-            _context.t7 = _context['catch'](0);
-
-            console.log(_context.t7);
-
           case 32:
+            _context.prev = 32;
+            _context.t8 = _context['catch'](0);
+
+            console.log(_context.t8);
+
+          case 35:
           case 'end':
             return _context.stop();
         }
       }
-    }, _callee, this, [[0, 29]]);
+    }, _callee, this, [[0, 32]]);
   }));
 
   function loaders() {
