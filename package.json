@@ -1,6 +1,6 @@
 {
   "name": "@graphql-guru/loader",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Core loaders from GraphQL Guru Servers",
   "main": "dist/index-loader.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "graphql": "^0.9.2",
     "graphql-custom-types": "^0.7.1",
     "graphql-tools-types": "^1.1.1",
-    "is-0schema-valid": "^0.2.0",
+    "is-schema-valid": "^0.2.0",
     "to-camel-case": "^1.0.0",
     "to-snake-case": "^1.0.0"
   },
