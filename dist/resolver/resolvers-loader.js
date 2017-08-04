@@ -226,7 +226,14 @@ var reduceResolverModulesAsync = exports.reduceResolverModulesAsync = function r
         Query: _extends({}, prev.Query, query)
       };
     }, previous);
-  }, resolver).catch(function (error) {
+  }, resolver).then(function (resolvers) {
+    if (Object.keys(resolvers.Mutation).length === 0) {
+      delete resolvers.Mutation;
+      return resolvers;
+    } else {
+      return resolvers;
+    }
+  }).catch(function (error) {
     return console.log(error);
   });
 };

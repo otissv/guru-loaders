@@ -128,7 +128,16 @@ export const reduceResolverModulesAsync = loadedResolverModules => {
       }, previous);
     },
     resolver
-  ).catch(error => console.log(error));
+  )
+    .then(resolvers => {
+      if (Object.keys(resolvers.Mutation).length === 0) {
+        delete resolvers.Mutation;
+        return resolvers;
+      } else {
+        return resolvers;
+      }
+    })
+    .catch(error => console.log(error));
 };
 
 export default async function resolverLoaderAsync ({ schema, validation }) {

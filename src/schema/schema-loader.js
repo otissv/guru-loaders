@@ -27,7 +27,7 @@ export function loadFilesAsync (paths) {
       try {
         const currentFile = await readFile(current);
 
-        return `${previous}\n\n${currentFile}`;
+        return `${previous}\n${currentFile}`;
       } catch (error) {
         console.log(error);
       }
@@ -58,13 +58,13 @@ export default async function schemaLoaderAsync () {
       schemaMutationDefinition = `
 type Mutation {
   ${mutation}
-}`;
+}
+`;
     }
 
     if (query && query.length > 0) {
       schemaQuery = 'query: Query';
-      schemaQueryDefinition = `
-type Query {
+      schemaQueryDefinition = `type Query {
   ${query}
   ${extensionSchemaQuery}
 }`;
@@ -80,7 +80,6 @@ schema {
   ${schemaMutation}
   ${schemaQuery}
 }`;
-
     const astDocument = parse(schema);
 
     const typeDefinitionList = typeDefinition

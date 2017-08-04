@@ -50,7 +50,7 @@ function loadFilesAsync(paths) {
 
             case 3:
               currentFile = _context.sent;
-              return _context.abrupt('return', previous + '\n\n' + currentFile);
+              return _context.abrupt('return', previous + '\n' + currentFile);
 
             case 7:
               _context.prev = 7;
@@ -105,12 +105,12 @@ exports.default = function () {
 
             if (mutation && mutation.length > 0) {
               schemaMutation = 'mutation: Mutation';
-              schemaMutationDefinition = '\ntype Mutation {\n  ' + mutation + '\n}';
+              schemaMutationDefinition = '\ntype Mutation {\n  ' + mutation + '\n}\n';
             }
 
             if (query && query.length > 0) {
               schemaQuery = 'query: Query';
-              schemaQueryDefinition = '\ntype Query {\n  ' + query + '\n  ' + _graphqlExtendSchema.extensionSchemaQuery + '\n}';
+              schemaQueryDefinition = 'type Query {\n  ' + query + '\n  ' + _graphqlExtendSchema.extensionSchemaQuery + '\n}';
             }
 
             schema = '\n' + typeDefinition + '\n' + schemaMutationDefinition + '\n' + schemaQueryDefinition + '\n' + _graphqlExtendSchema.extensionTypes + '\n\nschema {\n  ' + schemaMutation + '\n  ' + schemaQuery + '\n}';
