@@ -1,6 +1,6 @@
 {
   "name": "@graphql-guru/loader",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Core loaders from GraphQL Guru Servers",
   "main": "dist/index-loader.js",
   "scripts": {
