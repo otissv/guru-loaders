@@ -127,16 +127,16 @@ function createObjectFields(node) {
         kind: field.type.kind,
         name: field.type.type ? field.type.type.name.value : field.type.name.value
       },
-      arguments: field.arguments ? field.arguments.reduce(function (o, arg) {
+      arguments: field.arguments ? field.arguments.reduce(function (previous, arg) {
         var typeName = arg.type.type ? arg.type.type.name.value : arg.type.name.value;
 
-        return {
+        return [].concat(_toConsumableArray(previous), [{
           kind: arg.type.kind,
           name: arg.name.value,
           type: typeName,
           defaultValue: arg.defaultValue || null
-        };
-      }, {}) : null
+        }]);
+      }, []) : null
     }]);
   }, []);
 }

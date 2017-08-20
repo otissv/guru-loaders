@@ -80,18 +80,21 @@ function createObjectFields (node) {
             : field.type.name.value
         },
         arguments: field.arguments
-          ? field.arguments.reduce((o, arg) => {
+          ? field.arguments.reduce((previous, arg) => {
             const typeName = arg.type.type
-                ? arg.type.type.name.value
-                : arg.type.name.value;
+              ? arg.type.type.name.value
+              : arg.type.name.value;
 
-            return {
-              kind: arg.type.kind,
-              name: arg.name.value,
-              type: typeName,
-              defaultValue: arg.defaultValue || null
-            };
-          }, {})
+            return [
+              ...previous,
+              {
+                kind: arg.type.kind,
+                name: arg.name.value,
+                type: typeName,
+                defaultValue: arg.defaultValue || null
+              }
+            ];
+          }, [])
           : null
       }
     ],
